@@ -1,8 +1,8 @@
 module Rich
   class FilesController < ApplicationController
 
-    before_filter :authenticate_rich_user
-    before_filter :set_rich_file, only: [:show, :update, :destroy]
+    before_action :authenticate_rich_user
+    before_action :set_rich_file, only: [:show, :update, :destroy]
 
     layout "rich/application"
 
@@ -45,7 +45,7 @@ module Rich
         @file = @rich_file
         render :layout => false
       else
-        render :text => "File not found"
+        render :plain => "File not found"
       end
 
     end
